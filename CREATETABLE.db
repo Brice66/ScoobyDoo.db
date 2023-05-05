@@ -1,0 +1,144 @@
+-- Table des genres de monstres
+CREATE TABLE tbMGender (
+    monsterGenderID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    monsterGender VARCHAR(255)
+);
+
+-- Table des sous-types de monstres
+CREATE TABLE tbMSubtype (
+    monsterSubtypeID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    monsterSubtype VARCHAR(255)
+);
+
+-- Table des noms de monstres
+CREATE TABLE tbMName (
+    monsterNameID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    monsterName VARCHAR(255)
+);
+
+-- Table des types de monstres
+CREATE TABLE tbMType (
+    monsterTypeID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    monsterType VARCHAR(255)
+);
+
+-- Table des espèces de monstres
+CREATE TABLE tbMSpecies (
+    monsterSpeciesID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    monsterSpecies VARCHAR(255)
+);
+
+-- Table des acteurs
+CREATE TABLE tbActor (
+    actorID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    actorName VARCHAR(255)
+);
+
+-- Table des monstres
+CREATE TABLE tbMonster (
+    monsterID INT PRIMARY KEY,
+    monsterNameID INT,
+    monsterGenderID INT,
+    monsterTypeID INT,
+    monsterSubtypeID INT,
+    monsterSpeciesID INT,
+    FOREIGN KEY (monsterNameID) REFERENCES tbMName(monsterNameID),
+    FOREIGN KEY (monsterGenderID) REFERENCES tbMGender(monsterGenderID),
+    FOREIGN KEY (monsterTypeID) REFERENCES tbMType(monsterTypeID),
+    FOREIGN KEY (monsterSubtypeID) REFERENCES tbMSubtype(monsterSubtypeID),
+    FOREIGN KEY (monsterSpeciesID) REFERENCES tbMSpecies(monsterSpeciesID)
+);
+
+
+-- Table des personnages
+CREATE TABLE tbCharacter (
+    characterID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    characterName VARCHAR(255),
+    actorID INT,
+    FOREIGN KEY (actorID) REFERENCES tbActor(actorID)
+);
+-- Table des réseaux
+CREATE TABLE tbNetwork (
+    networkID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    networkName VARCHAR(255)
+);
+
+
+
+-- Table des pays ou états
+CREATE TABLE tbCountryOrState (
+    CountryOrStateID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    countryOrStateName VARCHAR(255)
+);
+
+-- Table des séries
+CREATE TABLE tbSerie (
+    seriesID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    seriesName VARCHAR(255)
+);
+
+-- Table des terrains
+CREATE TABLE tbTerrain (
+    terrainID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    terrainName VARCHAR(255)
+);
+
+CREATE TABLE tbTitle (
+   titleID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+   titleName VARCHAR(255) NOT NULL
+);
+
+
+-- Table tbFormat
+CREATE TABLE tbFormat (
+    formatID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    formatName VARCHAR(255) NOT NULL
+);
+
+-- Table tbSeason
+CREATE TABLE tbSeason (
+    seasonID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    seasonName VARCHAR(255) NOT NULL
+);
+
+-- Table des épisodes
+CREATE TABLE tbEpisode (
+    episodeID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
+    seriesID INT,
+    episodeTitleID INT,
+    episodeNumber INT,
+    dateAired DATE,
+    runTime INT,
+    formatID INT,
+    seasonID INT,
+    networkID INT,
+    settingTerrainID INT,
+    settingCountryOrStateID INT,
+    FOREIGN KEY (seriesID) REFERENCES tbSerie(seriesID),
+    FOREIGN KEY (titleID) REFERENCES tbTitle(titleID),
+    FOREIGN KEY (formatID) REFERENCES tbFormat(formatID),
+    FOREIGN KEY (seasonID) REFERENCES tbSeason(seasonID),
+    FOREIGN KEY (networkID) REFERENCES tbNetwork(networkID),
+    FOREIGN KEY (terrainID) REFERENCES tbTerrain(terrainID),
+    FOREIGN KEY (CountryOrStateID) REFERENCES tbCountryOrState(CountryOrStateID)
+);
+
+
+-- Table de relation entre les épisodes et les monstres
+CREATE TABLE tbEpisode_Monster (
+    episodeID INT,
+    monsterID INT,
+    PRIMARY KEY (episodeID, monsterID),
+    FOREIGN KEY (episodeID) REFERENCES tbEpisode(episodeID),
+    FOREIGN KEY (monsterID) REFERENCES tbMonster(monsterID)
+);
+-- Table tbCasting
+CREATE TABLE tbCasting (
+    episodeId INT NOT NULL,
+    characterId INT NOT NULL,
+    actorId INT NOT NULL,
+    PRIMARY KEY (episodeId, characterId),
+    FOREIGN KEY (actorId) REFERENCES tbActor(actorID),
+    FOREIGN KEY (characterId) REFERENCES tbCharacter(characterId),
+    FOREIGN KEY (episodeId) REFERENCES tbEpisode(episodeID)
+);
