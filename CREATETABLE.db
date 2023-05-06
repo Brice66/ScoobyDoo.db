@@ -31,7 +31,7 @@ CREATE TABLE tbMSpecies (
 -- Table des acteurs
 CREATE TABLE tbActor (
     actorID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
-    actorName VARCHAR(255)
+    actorNameFRED VARCHAR(255)
 );
 
 -- Table des monstres
@@ -53,9 +53,7 @@ CREATE TABLE tbMonster (
 -- Table des personnages
 CREATE TABLE tbCharacter (
     characterID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
-    characterName VARCHAR(255),
-    actorID INT,
-    FOREIGN KEY (actorID) REFERENCES tbActor(actorID)
+    characterName VARCHAR(255)
 );
 -- Table des réseaux
 CREATE TABLE tbNetwork (
