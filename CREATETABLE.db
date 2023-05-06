@@ -31,7 +31,7 @@ CREATE TABLE tbMSpecies (
 -- Table des acteurs
 CREATE TABLE tbActor (
     actorID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
-    actorNameFRED VARCHAR(255)
+    actorName VARCHAR(255)
 );
 
 -- Table des monstres
