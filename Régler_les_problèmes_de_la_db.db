@@ -80,3 +80,7 @@ WHERE title like 'Almost Purr-fect';
 UPDATE R0_
 SET monsterName = 'Dr. Phineus Phibes|Agent 3|Agent 4|Agent 5|Agent 6|Agent 7|Agent9|Agent 10|Agent 11|Agent 12|Agent 13|Dr. Trebal|Misty Swiss', monsterSpecies ='Human|Human|Human|Human|Human|Human|Human|Human|Human|Human|Human|Human|Human', monsterGender= 'Male|Male|Male|Male|Male|Male|Male|Male|Male|Male|Male|Male|Female'
 WHERE title like 'More Fondue for Scooby-Doo';
+
+//18 Changer les string en date
+UPDATE R0_
+SET dateAired = CONVERT(DATE, dateAired, 103);
