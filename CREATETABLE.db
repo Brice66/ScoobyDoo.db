@@ -104,7 +104,7 @@ CREATE TABLE tbSeason (
 CREATE TABLE tbEpisode (
     episodeID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
     seriesID INT,
-    episodeTitleID INT,
+    titleID
     dateAired DATE,
     runTime INT,
     formatID INT,
