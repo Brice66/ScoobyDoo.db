@@ -36,8 +36,7 @@ CREATE TABLE tbActor (
 
 -- Table des monstres
 CREATE TABLE tbMonster (
-    monsterID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY
-    monsterID INT PRIMARY KEY,
+    monsterID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
     monsterNameID INT,
     monsterGenderID INT,
     monsterTypeID INT,
@@ -104,7 +103,7 @@ CREATE TABLE tbSeason (
 CREATE TABLE tbEpisode (
     episodeID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY,
     seriesID INT,
-    titleID
+    titleID INT,
     dateAired DATE,
     runTime INT,
     formatID INT,
@@ -140,6 +139,9 @@ CREATE TABLE tbCasting (
     FOREIGN KEY (characterId) REFERENCES tbCharacter(characterId),
     FOREIGN KEY (episodeId) REFERENCES tbEpisode(episodeID)
 );
+
+
+
 
 CREATE TABLE R0_monstre(
     épi char(255),
