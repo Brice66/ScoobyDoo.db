@@ -145,5 +145,6 @@ CREATE TABLE R0_monstre(
     name char(255),
     gender char(255),
     type char(255),
-    subtype char(255)
+    subtype char(255),
+    species char(255)
     );
