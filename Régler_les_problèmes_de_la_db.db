@@ -84,3 +84,7 @@ WHERE title like 'More Fondue for Scooby-Doo';
 //18 Changer les string en date
 UPDATE R0_
 SET dateAired = CONVERT(DATE, dateAired, 103);
+
+UPDATE R0_
+SET dateAired = '1991-08-10'
+where title = 'Catcher on the Sly'
