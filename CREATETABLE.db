@@ -139,3 +139,11 @@ CREATE TABLE tbCasting (
     FOREIGN KEY (characterId) REFERENCES tbCharacter(characterId),
     FOREIGN KEY (episodeId) REFERENCES tbEpisode(episodeID)
 );
+
+CREATE TABLE R0_monstre(
+    épi char(255),
+    name char(255),
+    gender char(255),
+    type char(255),
+    subtype char(255)
+    );
