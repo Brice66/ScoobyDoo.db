@@ -36,6 +36,7 @@ CREATE TABLE tbActor (
 
 -- Table des monstres
 CREATE TABLE tbMonster (
+    monsterID INTEGER DEFAULT AUTOINCREMENT PRIMARY KEY
     monsterID INT PRIMARY KEY,
     monsterNameID INT,
     monsterGenderID INT,
