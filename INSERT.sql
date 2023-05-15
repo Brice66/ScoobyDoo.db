@@ -175,6 +175,29 @@ ORDER BY E.episodeID;
 
 
 
+------TEST FINAL------
+/*SELECT distinct Ser.seriesName, N.networkName, Sea.seasonName,Ti.titleName, dateAired,runTime,F.formatName
+FROM DBA.tbEpisode
+JOIN tbTitle as Ti
+JOIN tbFormat AS F
+JOIN tbNetwork AS N
+JOIN tbTerrain AS Te
+JOIN tbSeason as Sea
+JOIN tbSerie as Ser 
+JOIN tbCountryOrState as COS
+JOIN tbEpisode_Monster as EM
+JOIN tbMonster as MO
+JOIN tbMGender as MG
+JOIN tbMName as MN
+JOIN tbMSpecies as MS
+JOIn tbMSubtype as MSU
+JOIN tbMType as MT
+JOIN tbCasting as C
+JOIN tbActor as Ac
+JOIN tbCharacter as Ch*/
+
+-- correspond à la R0_
+---- Si on enlève le distinct il y a plein de ligne ??? c'est normal !!! car les monstres ne sont plus regroupée ensemble, si un épisode possède 4 monstres il y aura 4 lignes du même épisode (avec le monstre différent.)
 
 
 
